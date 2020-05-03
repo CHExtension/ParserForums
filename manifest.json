@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  // тут надеюсь все понятно
+  "name": "My application",
+  "version": "0.9",
+
+  "icons": {
+    "16": "./16x16.png",
+    "32": "./32x32.png",
+    "48": "./48x48.png",
+    "128": "./128x128.png"
+  },
+  "web_accessible_resources": [
+    "sound/Alarm-Fast-A1.mp3" ,
+    "sound/Alarm-Fast-High-Pitch-A3-Ring-Tone.mp3" ,
+    "sound/note.mp3",
+    "48x48.png"
+
+  ],
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+
+  "background" : {
+    "page": "background.html",
+    "js": [
+      "assets/js/jQuery.min.js" ,
+      "libraries/GNZ11/assets/js/modules/gnz11.Storage_class.js"
+    ]
+  },
+
+  "content_scripts":[{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "js": [
+      "assets/js/jQuery.min.js" ,
+      "script_in_content.js"
+    ]
+  }],
+
+  "browser_action": {
+    "default_title": "Application",
+    "default_icon" : "./16x16.png"
+    //  "default_popup": "login.html"        // это имя html-страницы расширения, которая будет всплывать при нажатии на иконку, можно с помощью JS устанавливать различные html страницы
+  }
+}
